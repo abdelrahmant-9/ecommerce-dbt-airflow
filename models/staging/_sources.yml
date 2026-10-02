@@ -1,0 +1,8 @@
+version: 2
+
+seeds:
+  - name: raw_customers
+    description: Raw customer export from the shop backend.
+  - name: raw_orders
+  - name: raw_order_items
+  - name: raw_products

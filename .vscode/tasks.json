@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Setup (install deps)", "type": "shell", "command": "uv sync" },
+    { "label": "dbt build (seed + run + test)", "type": "shell", "command": "uv run dbt build", "group": { "kind": "build", "isDefault": true } },
+    { "label": "dbt docs (open lineage site)", "type": "shell", "command": "uv run dbt docs generate && uv run dbt docs serve --port 8081" },
+    { "label": "Start Airflow UI", "type": "shell", "command": "./scripts/start_airflow.sh", "isBackground": true }
+  ]
+}

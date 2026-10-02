@@ -1,0 +1,11 @@
+.venv/
+.venv-airflow/
+airflow_home/
+target/
+dbt_packages/
+logs/
+warehouse/*.duckdb*
+.user.yml
+__pycache__/
+.DS_Store
+.env

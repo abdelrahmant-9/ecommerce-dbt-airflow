@@ -1,0 +1,22 @@
+# dbt reads this file because DBT_PROFILES_DIR points to the project folder
+# (set in .env / .vscode/settings.json / the Airflow DAG).
+ecommerce:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: warehouse/ecommerce.duckdb
+      threads: 4
+
+    # Same project runs on Snowflake by switching target: `dbt build --target snowflake`
+    # (needs `uv add dbt-snowflake` and the env vars below).
+    snowflake:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT', 'not-set') }}"
+      user: "{{ env_var('SNOWFLAKE_USER', 'not-set') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD', 'not-set') }}"
+      role: TRANSFORMER
+      warehouse: COMPUTE_WH
+      database: ECOMMERCE
+      schema: ANALYTICS
+      threads: 4
